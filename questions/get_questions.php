@@ -3,30 +3,35 @@ require '../connection.php';
 
 $quiz_id = "15";
 
-$sql = "SELECT * FROM Questions WHERE QuizID = ?";
+$sql = "SELECT QuestionID, QuestionText, QuestionType FROM Questions WHERE QuizID = ?"; // Select only the columns you need
 $stmt = mysqli_prepare($conn, $sql);
 
 if ($stmt) {
     $stmt->bind_param("s", $quiz_id);
     if ($stmt->execute()) {
-        $result = $stmt->get_result();
+        $result = mysqli_stmt_get_result($stmt);
+        $questions = array(); 
+
         while ($row = $result->fetch_assoc()) {
-            $question_id = $row["QuestionID"];
-            $question_text = $row["QuestionText"];
-            $question_type = $row["QuestionType"];
-            echo"Question ID: " . $question_id . "<br>";
-            echo"Question Text: " . $question_text . "<br>";
-            echo"Question Type: " . $question_type . "<br>";
-            echo"<br>";
+            $questions[] = array(
+                "QuestionID" => $row["QuestionID"],
+                "QuestionText" => $row["QuestionText"],
+                "QuestionType" => $row["QuestionType"]
+            );
         }
         $stmt->close();
+
+        header('Content-Type: application/json'); // Set the correct header
+        echo json_encode($questions);
+
     } else {
-        echo"Error executing statement: " . $stmt->error;
+        header('Content-Type: application/json');
+        echo json_encode(array("error" => "Error executing statement: " . $stmt->error));
     }
 } else {
-    echo "Error preparing statement: " . $conn->error;
+    header('Content-Type: application/json');
+    echo json_encode(array("error" => "Error preparing statement: " . mysqli_error($conn)));
 }
-
 
 mysqli_close($conn);
 ?>
