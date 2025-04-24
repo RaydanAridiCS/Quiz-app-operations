@@ -1,5 +1,5 @@
 <?php
-require 'connection.php';
+require '../connection.php';
 
 $title = "Javascript Quiz";
 $description = "This is a quiz about Javascript";
