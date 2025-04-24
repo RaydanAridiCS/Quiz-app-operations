@@ -12,7 +12,6 @@ if ($stmt) {
     if ($stmt->execute()) {
         $result = mysqli_stmt_get_result($stmt);
 
-        $options = array();
         while ($row = mysqli_fetch_assoc($result)) {
             $decodedOptions = json_decode($row['OptionText'], true);
             $options[] = array(

@@ -10,7 +10,6 @@ if ($stmt) {
     $stmt->bind_param("s", $quiz_id);
     if ($stmt->execute()) {
         $result = mysqli_stmt_get_result($stmt);
-        $questions = array(); 
 
         while ($row = $result->fetch_assoc()) {
             $questions[] = array(
