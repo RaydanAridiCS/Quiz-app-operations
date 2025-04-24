@@ -3,7 +3,7 @@ require '../connection.php';
 
 $quiz_id = "15";
 $question_text = "What is javascript used for?";
-$question_type = "TF";//MCQ or TF
+$question_type = "MCQ";//MCQ or TF
 //MCQ = Multiple Choice Question, TF = True/False
 
 $sql = "INSERT INTO Questions (QuizID, QuestionText, QuestionType) VALUES (?, ?, ?)";

@@ -1,7 +1,7 @@
 <?php
 require '../connection.php';
 
-$question_id = 5;
+$question_id = 9;
 $sql = "SELECT QuestionType FROM Questions WHERE QuestionID = ?";
 
 $stmt = mysqli_prepare($conn, $sql);
