@@ -12,8 +12,7 @@ $sql = "INSERT INTO Users (username, email ,passwordhash) VALUES (?, ?,?)";
 $stmt = mysqli_prepare($conn, $sql);
 if ($stmt) {
     mysqli_stmt_bind_param($stmt, "sss", $new_username,$new_email, $hashed_password); 
-
-
+    
     if (mysqli_stmt_execute($stmt)) {
         echo "New user created successfully";
     } else {
