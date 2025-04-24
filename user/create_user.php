@@ -1,5 +1,5 @@
 <?php
-require 'connection.php';
+require '../connection.php';
 
 
 $new_username = "newUser"; 

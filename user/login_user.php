@@ -1,5 +1,5 @@
 <?php
-require 'connection.php';
+require '../connection.php';
 
 $username = "newUser"; 
 $email = "test@gmail.com";
