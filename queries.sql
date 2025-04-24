@@ -32,7 +32,7 @@ CREATE TABLE Options (
     OptionID INT PRIMARY KEY AUTO_INCREMENT,
     QuestionID INT, 
     OptionText VARCHAR(255) NOT NULL,
-    IsCorrect BOOLEAN DEFAULT FALSE,
+    IsCorrect  VARCHAR(255) NOT NULL,
     FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID)
 );
 
